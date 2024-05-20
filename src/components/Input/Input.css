@@ -1,0 +1,18 @@
+.input {
+    width: 544px;
+    height: 56px;
+    top: 28px;
+    border-radius: 2px 0px 0px 0px;
+    border: none;
+    opacity: 0px;
+    margin-bottom: 40px;
+}
+label {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    color: rgba(49, 48, 55, 1);
+    margin-bottom: 15px;
+}

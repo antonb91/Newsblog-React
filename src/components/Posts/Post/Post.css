@@ -1,0 +1,165 @@
+/* ============= Detail ============= */
+
+.post__detail,
+.post__vertical,
+.post__small {
+  width: 736px;
+  margin-bottom: 32px;
+  margin-top: 20px;
+  border-bottom: 1px solid #dadada;
+
+}
+
+.post_dark {
+  background-color: #313037;
+  color: white
+}
+
+.post_dark h1 {
+  color: white;
+}
+
+.post_light {
+  background-color: white;
+  color: black
+}
+
+.post__detail-article {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.post__date {
+  color: #8d8e97;
+  margin-bottom: 8px;
+}
+
+.post__detail-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  color: #313037;
+  margin-bottom: 24px;
+}
+
+.post__detail-text {
+  color: #8d8e97;
+  line-height: 28px;
+}
+
+.post__detail-img {
+  width: 256px;
+  height: 244px;
+}
+
+.icons__footer {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons__footer-like-block,
+.icons__footer-mark-block {
+  display: flex;
+  gap: 24px;
+}
+
+/* ============= Vertical ============= */
+
+.post__vertical {
+  width: 352px;
+}
+
+.post__vertical-article {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post__date {
+  color: #8d8e97;
+  margin-bottom: 8px;
+}
+
+.post__vertical-content {
+  order: 2;
+}
+
+.post__vertical-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #313037;
+  margin-bottom: 28px;
+  margin-top: 8px;
+}
+
+.post__vertical-text {
+  display: none;
+}
+
+.post__vertical-img {
+  width: 352px;
+  height: 246px;
+}
+
+.icons__footer {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons__footer-like-block,
+.icons__footer-mark-block {
+  display: flex;
+  gap: 24px;
+}
+
+/* ============= Small ============= */
+
+.post__small {
+  width: 352px;
+}
+
+.post__small-article {
+  display: flex;
+  justify-content: space-between;
+  gap: 34px;
+}
+
+.post__date {
+  color: #8d8e97;
+  margin-bottom: 8px;
+}
+
+.post__small-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #313037;
+  margin-bottom: 24px;
+}
+
+.post__small-text {
+  display: none;
+  color: #8d8e97;
+  line-height: 28px;
+}
+
+.post__small-img {
+  width: 96px;
+  height: 96px;
+}
+
+.icons__footer {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons__footer-like-block,
+.icons__footer-mark-block {
+  display: flex;
+  gap: 24px;
+}

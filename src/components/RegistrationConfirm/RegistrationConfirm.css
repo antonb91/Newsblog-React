@@ -1,0 +1,19 @@
+.confirm__form-wrapper {
+    width: 624px;
+    height: 210px;
+    padding: 40px 0px 0px 0px;
+    border: 1px solid rgba(218, 218, 218, 1);
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.confirm__form-innertext {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: black;
+    margin: 0 0 62px 42px;
+}
