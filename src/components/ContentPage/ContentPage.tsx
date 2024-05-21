@@ -1,53 +1,74 @@
 import './ContentPage.css';
-import { IContentPage } from '../../types';
-import { FooterRegForm } from '../FooterRegForm';
 import LikeDislike from '../Icons/LikeDislike/LikeDislike';
 import BookMark from '../Icons/BookMark/BookMark';
 import { Slider } from '../Slider';
+import { useParams } from 'react-router-dom'; 
+import { IStoreState } from '../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loadSelectedPost } from '../../redux/actionCreators';
+import { Link } from 'react-router-dom';
+import { setTheme } from '../../redux/actionCreators';
 
+  
+const ContentPage = () => {
+    const { id = '' } = useParams(); 
+    const theme = useSelector((state: IStoreState) => state.ui.theme);
+    const selectedPost = useSelector((state: IStoreState) => state.posts.selectedPost);
+    const dispatch = useDispatch();
 
-const ContentPage = ({
-    post,
-    title,
-    image,
-    text
-}: IContentPage) => {
+    useEffect(() => {
+        dispatch(loadSelectedPost(id))
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            dispatch(setTheme(theme));
+        }
+    }, [dispatch]);
+
     return (
-        <article className='content__page-wrapper'>
-            <div className='content__page_header'>
-                <div className='content__page_header-menu'>
-                    <button className='content__page_header-btn'>Home</button>
-                    <span className='content__page_header-post'>{`Post ${post}`}</span>
+        <article className={`content__page-wrapper_${theme}`}>
+            <p className='upper__wrapper'>
+                <div className='content__page_header'>
+                    <div className='content__page_header-menu'>
+                        <Link to='/posts' className={`content__page_header-btn_${theme}`}>
+                            Home
+                        </Link>
+                        <span className={`content__page_header-post_${theme}`}>{`Post ${id}`}</span>
+                    </div>
+                        <h3 className={`content__page_header-title_${theme}`}>{selectedPost.title}</h3>
                 </div>
-                <h3 className='content__page_header-title'>{title}</h3>
-            </div>
-            <img className="content__page-img" src={image} alt="img name" />
-            <div className='content__page_main'>
-            <p className='content__page_main-text'>
-                {text.split('\n')
-                    .map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-            ))}</p>
+                <img className="content__page-img" src={selectedPost.image} alt="img name" />
+            </p>
+
+            <p className='lower__wrapper'>
+                <p className={`content__page_main-text_${theme}`}>
+                    {selectedPost.text?.split('\n')
+                        .map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                ))}
+                </p>
                 <div className='content__page_main-buttons'>
                     <div className='buttons-likes'>
                         <div className='btn-like'>
                             <LikeDislike isUp={true} />
                         </div>
+                        
                         <div className='btn-dislike'>
                             <LikeDislike isUp={false} />
-                        </div>
-                            
-                        </div>
-                    <div className='btn-bookmark'>
-                        <BookMark/>
-                        <div className='btn-bookmark-text'>Add to favorites</div>
+                        </div>  
                     </div>
-            </div>
                 </div>
+            </p>
+            
             <Slider />
-            <FooterRegForm />
         </article>
-        
     )
 }
 

@@ -10,4 +10,9 @@ export * from './RegistrationConfirm';
 export * from './Hooks';
 export * from './Posts';
 export * from './ContentPage';
-export * from './Slider'
+export * from './Slider';
+export * from './SignIn';
+export * from './SideMenu';
+export * from './UserSign';
+export * from './AddPost';
+export * from './FileLoader'

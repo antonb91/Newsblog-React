@@ -2,6 +2,9 @@ import { IPost } from '../../../types';
 import LikeDislike from '../../Icons/LikeDislike/LikeDislike';
 import BookMark from '../../Icons/BookMark/BookMark';
 import MoreIcon from '../../Icons/MoreIcon/MoreIcon';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { IStoreState } from '../../../types';
 
 const getDate = (postDate: string) => {
   const monthsMap = [
@@ -35,24 +38,33 @@ const PostSmall = ({
   author,
 }: IPost) => {
   const postDate = getDate(date);
+  const theme = useSelector((state: IStoreState) => state.ui.theme);
   return (
-    <div className="post__small" data-author={author} id={id.toString()}>
+    <div className="post__small" data-author={author}>
       <article className="post__small-article">
         <div className="post__small-content">
           <span className="post__date">{postDate}</span>
-          <h1 className="post__small-title">{title}</h1>
+          <Link to={`/posts/${id}`} className="Link">
+          <h1 className={`post__small-title_${theme}`}>{title}</h1>
+          </Link>
           <p className="post__small-text">{text}</p>
         </div>
         <img className="post__small-img" src={image} alt="img name" />
       </article>
       <div className="icons__footer">
-        <div className="icons__footer-like-block">
-          <LikeDislike isUp={true} />
-          <LikeDislike isUp={false} />
+      <div className="icons__footer-like-block">
+          <LikeDislike isUp={true} 
+          stroke={theme === 'dark' ? 'rgba(141, 142, 151, 1)' : 'rgba(49, 48, 55, 1)'}/>
+          <LikeDislike isUp={false} 
+          stroke={theme === 'dark' ? 'rgba(141, 142, 151, 1)' : 'rgba(49, 48, 55, 1)'}/>
         </div>
         <div className="icons__footer-mark-block">
-          <BookMark />
-          <MoreIcon />
+          <BookMark 
+            stroke={theme === 'dark' ? 'rgba(141, 142, 151, 1)' : 'rgba(49, 48, 55, 1)'} 
+          />
+          <MoreIcon 
+            stroke={theme === 'dark' ? 'rgba(141, 142, 151, 1)' : 'rgba(49, 48, 55, 1)'}
+          />
         </div>
       </div>
     </div>

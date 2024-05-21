@@ -1,9 +1,10 @@
 import { IPost, IPostWithType, POST_TYPES } from "../../../types"
-import { PostDetail } from "./PostDetail"
+import { PostDetail } from './PostDetail'
 import { PostVertical } from "./PostVertical"
 import { PostSmall } from "./PostSmall"
-import { ThemeContext } from "../../../contexts/themeContext"
 import './Post.css';
+import { useSelector } from 'react-redux'
+import { IStoreState } from "../../../types";
 
 const getResultPostComponent = (type: POST_TYPES) => {
     switch(type) {
@@ -20,13 +21,13 @@ const getResultPostComponent = (type: POST_TYPES) => {
 }
 
 const Post = ({ type, ...other }: IPostWithType) => {
-    const ResultComponent = getResultPostComponent(type)
+    const ResultComponent = getResultPostComponent(type)!;
+    const theme = useSelector((state: IStoreState) => state.ui.theme);
     return (
-        <div>
-          <ResultComponent {...other} />
-        </div>
-
-    )
-}
+      <div className={`post_${theme}`}>
+        <ResultComponent {...other} />
+      </div>
+    );
+  };
 
 export { Post }

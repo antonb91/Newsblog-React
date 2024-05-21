@@ -2,49 +2,83 @@ import './RegistrationForm.css'
 import { Input } from '../Input'
 import { INPUT_TYPES } from '../../types'
 import { Button } from '../Button'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signUpUser } from '../../redux/actionCreators'
+import { Link } from 'react-router-dom';
 
 const RegistrationForm = () => {
+    const dispatch =useDispatch();
+    const [formState, setFormState] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirm: ''
+    })
+    
+    const handler = (key: string, value: string) => {
+        setFormState(prev => ({
+            ...prev,
+            [key]: value
+        }))
+    }
+
+    const handleSignUp = () => {
+        const { confirm, ...other } = formState;
+        dispatch(signUpUser(other))
+    }
+
     return (
        <div className='reg__form-wrapper'>
           <div className='input__container'>
             <Input 
-                className="input"
+                label={'Name'}
                 type={INPUT_TYPES.TEXT}
-                placeholder='Your name'
-                label='Name'
+                placeholder={'Your name'}
+                className="input"
+                value={formState.username}
+                onChange={(e: any) => handler('username', e.target.value)}
             />
 
             <Input 
-                className="input"
+                label={'Email'}
                 type={INPUT_TYPES.TEXT}
-                placeholder='Your email'
-                label='Email'
+                placeholder={'Your email'}
+                className="input"
+                value={formState.email}
+                onChange={(e: any) => handler('email', e.target.value)}
             />
 
             <Input 
-                className="input"
+                label={'Password'}
                 type={INPUT_TYPES.PASSWORD}
-                placeholder='Your password'
-                label='Password'
+                placeholder={'Your password'}
+                className="input"
+                value={formState.password}
+                onChange={(e: any) => handler('password', e.target.value)}
             />
 
             <Input 
-                className="input"
+                label={'Confirm password'}
                 type={INPUT_TYPES.PASSWORD}
-                placeholder='Confirm password'
-                label='Confirm password'
+                placeholder={'Confirm password'}
+                className="input"
+                value={formState.confirm}
+                onChange={(e: any) => handler('confirm', e.target.value)}
             />
             </div>
-
-            <Button className='button'
-              onClick={() => {}}          
-              children='Sign up'
-            />
+            <div className='sign_up_button-container'>
+                <Button 
+                    className='sign_up-button'
+                    onClick={handleSignUp}       
+                    children='Sign up'
+                />
+            </div>
            
             <footer className='reg__form-footer'>
                 <div className='reg__form-footer-inner'>
                     <div className='reg__form-footer-text'>Already have an account?</div>
-                    <button className='reg__form-footer-btn'>Sign in</button>
+                    <Link to="/sign-in" className='reg__form-footer-btn'>Sign in</Link>
                 </div>
             </footer>
         </div>
@@ -53,30 +87,3 @@ const RegistrationForm = () => {
 
 
 export { RegistrationForm }
-
-
-
-{/* <div className='input__container'>
-<div className='input-title'>Name</div>
-<input className='reg__form-input'
-        type='text'
-        placeholder='Your name'
-    ></input>
-
-<div className='input-title'>Email</div>
-<input className='reg__form-input'
-        type='text'
-        placeholder='Your email'
-    ></input>
-
-    <div className='input-title'>Password</div>
-    <input className='reg__form-input'
-        type='password'
-        placeholder='Your password'
-    ></input>
-
-    <div className='input-title'>Confirm password</div>
-    <input className='reg__form-input'
-        type='password'
-        placeholder='Confirm password'
-    ></input> */}

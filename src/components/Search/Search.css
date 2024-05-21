@@ -1,3 +1,9 @@
+.search__container {
+  display: flex;
+  position: relative;
+  height: 100%;
+  flex-grow: 1;
+}
 .header__search {
     flex-grow: 1;
     padding: 0 10px;
@@ -6,6 +12,8 @@
     outline: none;
     border: none;
     color: #fff;
+    border-right: 1px solid #5360cd;
+    border-left: 1px solid #5360cd;
   }
   
   .header__search::placeholder {

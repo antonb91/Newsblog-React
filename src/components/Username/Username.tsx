@@ -1,19 +1,26 @@
+import { useSelector } from 'react-redux';
 import './Username.css';
+import { IStoreState } from "../../types";
 
 const Username = ({
-  username,
   className,
 }: {
-  username: string;
-  className: string;
+  username?: string;
+  className?: string;
 }) => {
-  const getInitials: (names: string) => string = (names) =>
-    names
-      .split(' ')
-      .map((name) => name[0].toUpperCase())
-      .join('');
+  const username = useSelector((state: IStoreState) => state.user.user.username);
+  
+  const getInitials= (fullName: any) => { 
+    if(fullName) { 
+    return  fullName 
+      .split('_') 
+      .map((name: any) => name[0].toUpperCase()) 
+      .join(''); 
+    } 
+  }
+      
   return (
-    <div className={className}>
+    <div className='userblock'>
       <div className="username">
         <div className="username__initials">{getInitials(username)}</div>
         <div className="username__fullname">{username}</div>
