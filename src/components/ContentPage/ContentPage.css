@@ -5,6 +5,12 @@
     margin-top: -90px;
     margin-bottom: 60px;
 }
+.container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    height: 100%;
+}
 .content__page-wrapper_dark {
     background-color: #313037;
 }
@@ -89,7 +95,7 @@
 .lower__wrapper {
     margin: 0 auto;
     width: 46%;
-    margin-bottom: 72px;
+    margin-bottom: 220px;
 }
 .content__page_main-text_light,
 .content__page_main-text_dark {

@@ -66,8 +66,9 @@ const ContentPage = () => {
                     </div>
                 </div>
             </p>
-            
-            <Slider />
+            <div className='container'>
+                <Slider />
+            </div>
         </article>
     )
 }

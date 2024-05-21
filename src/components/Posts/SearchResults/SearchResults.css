@@ -10,7 +10,7 @@
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    height: 80vh;
+    height: 76vh;
 }
 .search__result-wrapper_dark {
     background-color: #313037;
